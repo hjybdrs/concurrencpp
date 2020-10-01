@@ -1,0 +1,46 @@
+version: 2.1
+jobs:
+  build-and-test-linux:
+    machine:
+      image: ubuntu-2004:202008-01
+    steps:
+      - run:
+          name: clang install version 9
+          command: |
+            sudo apt-get update
+            sudo apt-get install clang-9
+            sudo apt-get install libc++-9-dev
+            sudo apt-get install libc++abi-9-dev
+      - checkout
+      - run: 'sudo apt remove --purge --auto-remove cmake'
+      - run:
+          name: cmake install version 3.18.3
+          command: |
+            version=3.18.3
+            build=1
+            mkdir ~/temp
+            cd ~/temp
+            wget https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-Linux-x86_64.sh
+            sudo mkdir /opt/cmake
+            sudo sh cmake-3.18.3-Linux-x86_64.sh --skip-license --prefix=/opt/cmake
+            sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+            cd /
+            cmake --version
+      - run:
+          name: build
+          command: |
+            sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-9 100
+            sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-9 100
+            mkdir build
+            cd build
+            cmake -DCMAKE_BUILD_TYPE=Release ..
+            make -j$(nproc)
+      - run:
+          name: test
+          command: ./build/tests/tests
+
+workflows:
+ version: 2
+ build_and_test-linux:
+   jobs:
+     - build-and-test-linux
