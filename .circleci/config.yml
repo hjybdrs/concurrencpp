@@ -54,7 +54,7 @@ jobs:
           command: |
             mkdir C:\cmake
             cd C:\cmake
-            $ProgressPreference = "SilentlyContinue"
+            $ProgressPreference = "Stop"
             $url = "https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-win64-x64.zip"
             $output = ".\cmake.zip"
             Invoke-WebRequest -Uri $url -OutFile $output
