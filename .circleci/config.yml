@@ -68,8 +68,8 @@ jobs:
             cmake --build ./build --config Release
             ls build
       - run: 
-        name: test
-        command: ./tests/tests
+          name: test
+          command: ./tests/tests
 workflows:
  version: 2.1
 # build_and_test-linux:
