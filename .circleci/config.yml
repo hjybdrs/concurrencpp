@@ -56,7 +56,7 @@ jobs:
             cd C:\cmake
             curl.exe -o cmake.zip "https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-win64-x64.zip"
             Write-Output "cmake.zip has been downloaded"
-            Expand-Archive .\cmake.zip
+            tar -xf cmake.zip
             cd .\cmake-3.18.3-win64-x64\cmake-3.18.3-win64-x64\bin
             cmake --version
       - run: 
