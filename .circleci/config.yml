@@ -68,3 +68,4 @@ workflows:
  build_and_test-linux:
    jobs:
  #    - build-and-test-linux
+      - build-and-test-windows
