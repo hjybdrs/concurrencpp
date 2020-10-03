@@ -54,6 +54,7 @@ jobs:
           command: |
             mkdir C:\cmake
             cd C:\cmake
+            $ProgressPreference = "SilentlyContinue"
             $url = "https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-win64-x64.zip"
             $output = ".\cmake.zip"
             Invoke-WebRequest -Uri $url -OutFile $output
@@ -69,6 +70,10 @@ jobs:
 workflows:
  version: 2.1
  build_and_test-linux:
+   jobs:
+ #    - build-and-test-linux
+
+ build_and_test-windows:
    jobs:
  #    - build-and-test-linux
       - build-and-test-windows
