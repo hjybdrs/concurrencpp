@@ -67,6 +67,9 @@ jobs:
             cmake -G "Visual Studio 16 2019" -A x64 -B build
             cmake --build ./build --config Release
             ls build
+      - run: 
+        name: test
+        command: ./tests/tests
 workflows:
  version: 2.1
 # build_and_test-linux:
