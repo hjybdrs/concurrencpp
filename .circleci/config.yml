@@ -45,7 +45,7 @@ jobs:
       shell: powershell.exe
     steps:
       - checkout
-      -run:
+      - run:
           name: cmake install version 3.18.3
           command: |
             mkdir C:\cmake
@@ -55,7 +55,7 @@ jobs:
             Invoke-WebRequest -Uri $url -OutFile $output
             Write-Output "cmake.zip has been downloaded"
             Expand-Archive .\cmake.zip
-	  -run:
+      - run:
         name: build_and_test
         command: |
           $env:Path += ";C:\cmake\cmake-3.18.3-win64-x64\cmake-3.18.3-win64-x64\bin"
