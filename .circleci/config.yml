@@ -59,6 +59,12 @@ jobs:
             Invoke-WebRequest -Uri $url -OutFile $output
             Write-Output "cmake.zip has been downloaded"
             Expand-Archive .\cmake.zip
+      - run: 
+          name: validate cmake installed
+          command: |
+            cd C:\
+            $env:Path += ";C:\cmake\cmake-3.18.3-win64-x64\cmake-3.18.3-win64-x64\bin"
+            cmake --version
       
 workflows:
  version: 2.1
