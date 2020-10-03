@@ -61,12 +61,11 @@ jobs:
             cd .\cmake-3.18.3-win64-x64\bin
             .\cmake --version
       - run: 
-          name: validate cmake installed
+          name: build
           command: |
-            cd C:\
-            $env:Path += ";C:\cmake\cmake-3.18.3-win64-x64\bin"
-            cmake --version
-      
+            cmake -G "Visual Studio 16 2019" -A x64 -B build
+            cmake --build ./build --config Release
+            ls build
 workflows:
  version: 2.1
 # build_and_test-linux:
