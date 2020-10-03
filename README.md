@@ -1,9 +1,7 @@
 
 # concurrencpp, the C++ concurrency library
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-[![CircleCI](https://circleci.com/gh/David-Haim/concurrencpp.svg?style=shield)](https://circleci.com/gh/David-Haim/concurrencpp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![CircleCI](https://circleci.com/gh/David-Haim/concurrencpp.svg?style=shield)](https://circleci.com/gh/David-Haim/concurrencpp)
 
 concurrencpp allows applications to write asynchronous code easily and safely by using executors and coroutines.
 By using concurrencpp applications can break down big procedures that need to be processed asynchronously into smaller tasks that run concurrently and work in a co-operative manner to achieve the wanted result. 
