@@ -72,11 +72,9 @@ jobs:
           command: .\build\tests\Release\tests.exe
 workflows:
  version: 2.1
-# build_and_test-linux:
-#   jobs:
- #    - build-and-test-linux
-
+ build_and_test-linux:
+   jobs:
+     - build-and-test-linux
  build_and_test-windows:
    jobs:
- #    - build-and-test-linux
-      - build-and-test-windows
+     - build-and-test-windows
