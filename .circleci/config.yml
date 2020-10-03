@@ -38,9 +38,33 @@ jobs:
       - run:
           name: test
           command: ./build/tests/tests
-
+  
+  build-and-test-windows:
+    executor:
+      name: win/default
+      shell: powershell.exe
+    steps:
+      - checkout
+      -run:
+          name: cmake install version 3.18.3
+          command: |
+            mkdir C:\cmake
+            cd C:\cmake
+            $url = "https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-win64-x64.zip"
+            $output = ".\cmake.zip"
+            Invoke-WebRequest -Uri $url -OutFile $output
+            Write-Output "cmake.zip has been downloaded"
+            Expand-Archive .\cmake.zip
+	  -run:
+        name: build_and_test
+        command: |
+          $env:Path += ";C:\cmake\cmake-3.18.3-win64-x64\cmake-3.18.3-win64-x64\bin"
+          cmake -G "Visual Studio 16 2019" -A x64 -DRUNTIME_OUTPUT_DIRECTORY=build -DCMAKE_BUILD_TYPE=Release
+          cmake --build .  --config Release
+          ./build/tests/tests
+          
 workflows:
  version: 2
  build_and_test-linux:
    jobs:
-     - build-and-test-linux
+ #    - build-and-test-linux
