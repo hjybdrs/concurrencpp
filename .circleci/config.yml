@@ -56,16 +56,15 @@ jobs:
             cd C:\cmake
             curl.exe -L -o cmake.zip "https://github.com/Kitware/CMake/releases/download/v3.18.3/cmake-3.18.3-win64-x64.zip"
             Write-Output "cmake.zip has been downloaded"
-            ls
             tar -xf cmake.zip
             ls
-            cd .\cmake-3.18.3-win64-x64\cmake-3.18.3-win64-x64\bin
+            cd .\cmake-3.18.3-win64-x64\bin
             cmake --version
       - run: 
           name: validate cmake installed
           command: |
             cd C:\
-            $env:Path += ";C:\cmake\cmake-3.18.3-win64-x64\cmake-3.18.3-win64-x64\bin"
+            $env:Path += ";C:\cmake-3.18.3-win64-x64\bin"
             cmake --version
       
 workflows:
