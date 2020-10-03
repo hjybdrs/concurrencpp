@@ -69,7 +69,7 @@ jobs:
             ls build
       - run: 
           name: test
-          command: ./tests/tests
+          command: .\build\tests\Release\tests.exe
 workflows:
  version: 2.1
 # build_and_test-linux:
