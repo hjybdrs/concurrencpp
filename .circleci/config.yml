@@ -64,7 +64,7 @@ jobs:
           name: validate cmake installed
           command: |
             cd C:\
-            $env:Path += ";C:\cmake-3.18.3-win64-x64\bin"
+            $env:Path += ";C:\cmake\cmake-3.18.3-win64-x64\bin"
             cmake --version
       
 workflows:
